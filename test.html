@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Creative - Start Bootstrap Theme</title>
+
+  <!-- Font Awesome Icons -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+  <!-- Plugin CSS -->
+  <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+  <!-- Theme CSS - Includes Bootstrap -->
+  <link href="css/creative.min.css" rel="stylesheet">
+  
+  <!-- Login -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="css/login.css" rel="stylesheet">
+  
+  
+  <script type = "text/javascript" src = "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script> 
+    <script type = "text/javascript" >
+    $(document).ready(function(){
+	
+	    $("#signupsm").click(function(){
+            var login=$("#signupid").val();
+	        var pass=$("#signuppw").val();
+			var mydata="signupid="+login+"&signuppw="+pass;
+	        alert(mydata);
+	        $.ajax({
+               type: 'POST',
+               url: 'http://127.0.0.1:9999/test',
+			   dataType:"text",
+			   data:mydata,
+               success: function(data) {
+               alert(data);
+               // console.log('yay');
+               // console.log(data);              
+               },
+            error: function(xhr, status, error) {
+                console.log('Error: ' + error.message);
+				}
+            });
+        });
+		
+		
+		$("#loginsm").click(function(){
+	        var login=$("#loginid").val();
+	        var pass=$("#loginpw").val();
+		    var mydata="loginid="+login+"&loginpw="+pass;
+		    alert(mydata);
+		    $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:9999/login',
+			    dataType:"text",
+			    data:mydata,
+                success: function(data) {
+			    alert(data);
+                if(data==""){
+			        alert("Please Login Again");
+			    }else{
+				//localStorage.setItem("loginsusucess", "1");
+				localStorage.setItem("useid", data);
+			    location.href="http://127.0.0.1:9999/realindex";
+			     
+				 }
+                //console.log('yay');
+                //console.log(data);              
+                },
+            error: function(xhr, status, error) {
+                console.log('Error: ' + error.message);
+                }
+            });
+		});
+		
+	});
+  </script>
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">Join Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead">
+   <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold">Welcome to Taipei City </h1>
+          
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-75 font-weight-light mb-5">This is a beautiful,friendly,entertainment city in Asia! </p>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  
+  
+  
+  
+  <!-- About Section -->
+  <section class="page-section bg-primary" id="about">
+        <div class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+                    <h3>Sign UP</h3>
+                    
+                        <div class="form-group">
+                            <input type="text" id="signupid" class="form-control" placeholder="Your ID">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="signuppw" class="form-control" placeholder="Your Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                           <button id="signupsm" class="btnSubmit">Sign UP</button>
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="ForgetPwd">Forget Password?</a>
+                        </div>
+                    
+                </div>
+                <div class="col-md-6 login-form-2">
+                    <h3>Login</h3>
+                    
+                        <div class="form-group">
+                            <input type="text" id="loginid" class="form-control" placeholder="Your ID *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="loginpw"class="form-control" placeholder="Your Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <button id="loginsm" class="btnSubmit">Login</button>
+                        </div>
+                        <div class="form-group">
+
+                            <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	
+  <!-- Footer -->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="small text-center text-muted">Copyright &copy; 2019 - Start Bootstrap</div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/creative.min.js"></script>
+
+</body>
+
+</html>
